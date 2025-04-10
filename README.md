@@ -1,6 +1,6 @@
 # PYBasic - Flask 基础增强框架
 
-![Python](https://img.shields.io/badge/python-3.7%2B-blue)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 ![Flask](https://img.shields.io/badge/flask-2.0%2B-lightgrey)
 ![Redis](https://img.shields.io/badge/redis-支持-red)
 ![OpenAI](https://img.shields.io/badge/openai-API-9cf)
