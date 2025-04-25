@@ -6,7 +6,7 @@ if DEBUG:
     PASSWORD = None
     DB = 0
 else:
-    HOST = '47.238.224.64'
+    HOST = ''
     PORT = 6379
-    PASSWORD = 'momaking'
+    PASSWORD = ''
     DB = 2

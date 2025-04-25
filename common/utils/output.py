@@ -8,11 +8,11 @@ def success(code=0, message="Success", data={}):
     return response
 
 
-def error(code=1, message="Error", status_code=200):
+def error(code=1, message="Error", status_code=200, data=[]):
     response = {
         "code": code,
         "msg": message,
-        "data": []
+        "data": data
     }, status_code
 
     return response

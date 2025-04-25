@@ -1,6 +1,7 @@
 import os
 import uuid
 from datetime import datetime
+
 from dotenv import load_dotenv
 from werkzeug.utils import secure_filename
 
@@ -8,7 +9,7 @@ from werkzeug.utils import secure_filename
 load_dotenv()
 
 # 配置参数（修正版）
-BASE_FOLDER = os.getenv("BASE_FOLDER", "storge").strip('/')  # 基础存储目录
+BASE_FOLDER = os.getenv("BASE_FOLDER", "static").strip('/')  # 基础存储目录
 UPLOAD_SUBFOLDER = os.getenv("UPLOAD_SUBFOLDER", "").strip('/')  # 子目录（可选）
 ALLOWED_EXTENSIONS = set(
     ext.strip().lower() for ext in
@@ -17,12 +18,14 @@ ALLOWED_EXTENSIONS = set(
 )
 MAX_FILE_SIZE = int(os.getenv("MAX_FILE_SIZE", 20971520))  # 默认20MB
 
+
 def get_full_upload_path(subfolder=""):
     """获取完整的上传路径"""
     subfolder = subfolder.strip('/') if subfolder else ""
     if subfolder:
         return os.path.join(BASE_FOLDER, subfolder)
     return BASE_FOLDER
+
 
 def validate_upload(file, subfolder="", extensions=None, max_size=None):
     """
@@ -64,7 +67,7 @@ def validate_upload(file, subfolder="", extensions=None, max_size=None):
     if file_size > max_size:
         return False, {
             "code": 4004,
-            "message": f"File too large (max {max_size//1024//1024}MB)",
+            "message": f"File too large (max {max_size // 1024 // 1024}MB)",
             "max_size": max_size,
             "file_size": file_size
         }
@@ -85,6 +88,7 @@ def validate_upload(file, subfolder="", extensions=None, max_size=None):
         "file_size": file_size,
         "save_path": save_path.replace('\\', '/')
     }
+
 
 def save_file(file, subfolder="", custom_name=None, allowed_extensions=None, max_size=None):
     """
